@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js"
 import { CaseFile } from "../models/CaseFile.js"
+import { saveState } from "../utils/Store.js"
 
 class CaseFilesService {
   updateCaseFile(updatedContent) {
@@ -29,6 +30,11 @@ class CaseFilesService {
     const caseFiles = AppState.caseFiles
     const newCaseFile = new CaseFile(rawCaseFile)
     caseFiles.push(newCaseFile)
+    this.saveCaseFiles()
+  }
+
+  saveCaseFiles() {
+    saveState('caseFiles', AppState.caseFiles)
   }
 
 }
