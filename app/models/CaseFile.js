@@ -13,7 +13,8 @@ export class CaseFile {
     this.isLocked = true
     this.title = data.title
     this.agency = data.agency
-    this.content = data.content
+    // NOTE ?? will check if the value on the right is undefined or null, and will return the value on the left if that is true (nullish coalescing operator)
+    this.content = data.content ?? 'No content'
   }
 
   get caseNumber() {
