@@ -35,4 +35,24 @@ export class CaseFile {
     </li>
     `
   }
+
+  get activeHTMLTemplate() {
+    return `
+    <div class="bg-light p-3">
+      <h1>Bigfoot</h1>
+      <time class="fs-3" datetime="1984-03-12">
+        Thursday, March 12 1984 at 14:00:01
+      </time>
+      <form>
+        <label for="reportContent">Report Content</label>
+        <textarea id="reportContent" name="content">
+        </textarea>
+        <div class="d-flex justify-content-between align-items-center my-1">
+          <p class="mb-0">Last unlocked on 12/12/2024 at 14:00:01</p>
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+    `
+  }
 }

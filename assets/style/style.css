@@ -34,3 +34,9 @@ input {
   justify-content: start;
   align-items: end;
 }
+
+textarea {
+  width: 100%;
+  min-height: 45dvh;
+  max-height: 60dvh;
+}
