@@ -26,7 +26,7 @@ export class CaseFile {
 
   get listHTMLTemplate() {
     return `
-     <li role="button">
+    <li onclick="app.caseFilesController.selectActiveCaseFile('${this.id}')" role="button">
       <div class="d-flex justify-content-between fs-5 mb-2">
         <b>${this.agency} ${this.caseNumber}</b>
         <span>${this.reportedDate}</span>

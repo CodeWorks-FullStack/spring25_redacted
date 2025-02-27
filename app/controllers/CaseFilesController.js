@@ -35,4 +35,9 @@ export class CaseFilesController {
     console.log('data from form', rawCaseFileData);
     caseFilesService.createCaseFile(rawCaseFileData)
   }
+
+  selectActiveCaseFile(caseFileId) {
+    console.log('selecting case file with the id of ' + caseFileId);
+
+  }
 }
