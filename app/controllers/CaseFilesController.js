@@ -12,6 +12,7 @@ export class CaseFilesController {
 
     // page load
     console.log('case files controller is loaded');
+    caseFilesService.loadCaseFiles()
     this.drawCaseFiles()
     this.drawReportCount()
   }
