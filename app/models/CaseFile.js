@@ -14,7 +14,7 @@ export class CaseFile {
     this.title = data.title
     this.agency = data.agency
     // NOTE ?? will check if the value on the right is undefined or null, and will return the value on the left if that is true (nullish coalescing operator)
-    this.content = data.content ?? 'No content'
+    this.content = data.content ?? ''
   }
 
   get caseNumber() {
@@ -78,7 +78,7 @@ export class CaseFile {
       </time>
       <form onsubmit="app.caseFilesController.saveReport()">
         <label for="reportContent">Report Content</label>
-        <textarea id="reportContent" name="content" ${this.isLocked ? 'disabled' : ''}>${this.content}</textarea>
+        <textarea id="reportContent" name="content" placeholder="No Content..." ${this.isLocked ? 'disabled' : ''}>${this.content}</textarea>
         <div class="d-flex justify-content-between align-items-center my-1">
           <p class="mb-0">Last unlocked on ${this.lastUnlockedDate}</p>
           <div>

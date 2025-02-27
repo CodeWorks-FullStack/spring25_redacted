@@ -9,10 +9,9 @@ export class CaseFilesController {
     AppState.on('caseFiles', this.drawReportCount)
     AppState.on('activeCaseFile', this.drawActiveCaseFile)
 
-
     // page load
-    console.log('case files controller is loaded');
     caseFilesService.loadCaseFiles()
+    // NOTE no longer need to manually call our draw methods after local storage is working correctly
     // this.drawCaseFiles()
     // this.drawReportCount()
   }
@@ -37,16 +36,19 @@ export class CaseFilesController {
     const caseFile = AppState.activeCaseFile
     const activeCaseFileElem = document.getElementById('activeCaseFile')
 
+    // REVIEW null check
+    // NOTE when we delete a case file, it sets the activeCaseFile in the AppState to null, so we want to draw our placeholder in that case
     if (caseFile == null) {
       activeCaseFileElem.innerHTML = '<h1 class="sticky-top">Select A File</h1>'
       return
     }
 
+    // else
     activeCaseFileElem.innerHTML = caseFile.activeHTMLTemplate
   }
 
   createCaseFile() {
-    event.preventDefault()
+    event.preventDefault() // stop refresh
     const formElem = event.target
     const rawCaseFileData = getFormData(formElem)
     console.log('data from form', rawCaseFileData);
@@ -60,12 +62,11 @@ export class CaseFilesController {
 
   unlockCaseFile() {
     // NOTE this will always unlock the active case file
-    console.log('unlocking a case file!', AppState.activeCaseFile);
     caseFilesService.unlockActiveCaseFile()
   }
 
   saveReport() {
-    event.preventDefault()
+    event.preventDefault() // stop refresh
     console.log('saving report!');
     const formElem = event.target
     // NOTE you can ignore the error that VSCODE is pointing at on this line
@@ -74,6 +75,8 @@ export class CaseFilesController {
     // @ts-ignore
     const contentFromTextArea = formElem.content.value
     caseFilesService.updateCaseFile(contentFromTextArea)
+    // @ts-ignore
+    formElem.reset()
   }
 
   deleteCaseFile() {
@@ -83,6 +86,7 @@ export class CaseFilesController {
       return
     }
 
+    // NOTE this will always delete the active case file
     caseFilesService.deleteActiveCaseFile()
   }
 }

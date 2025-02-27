@@ -7,17 +7,15 @@ class CaseFilesService {
 
     const caseFiles = AppState.caseFiles
     const caseFileIndex = caseFiles.findIndex(caseFile => caseFile.id == AppState.activeCaseFile.id)
-    caseFiles.splice(caseFileIndex, 1) // trigger observer
-
-    AppState.activeCaseFile = null // trigger observer
-
+    caseFiles.splice(caseFileIndex, 1) // trigger 'caseFiles' observers
+    AppState.activeCaseFile = null // trigger 'activeCaseFile' observer
     this.saveCaseFiles()
   }
   updateCaseFile(updatedContent) {
     const caseFile = AppState.activeCaseFile
     caseFile.content = updatedContent
     caseFile.isLocked = true
-    AppState.emit('activeCaseFile')
+    AppState.emit('activeCaseFile') // NOTE manually trigger 'activeCaseFile' observer
     this.saveCaseFiles()
   }
 
@@ -26,8 +24,7 @@ class CaseFilesService {
     // NOTE changing one property on an object is not enough to trigger our observer
     caseFile.isLocked = false
     caseFile.lastUnlockedAt = new Date()
-    // NOTE manually trigger an observer
-    AppState.emit('activeCaseFile')
+    AppState.emit('activeCaseFile') // NOTE manually trigger 'activeCaseFile' observer
     this.saveCaseFiles()
   }
 
@@ -35,13 +32,13 @@ class CaseFilesService {
     const caseFiles = AppState.caseFiles
     const foundCaseFile = caseFiles.find(caseFile => caseFile.id == caseFileId)
     console.log('found a case file', foundCaseFile);
-    AppState.activeCaseFile = foundCaseFile
+    AppState.activeCaseFile = foundCaseFile // triggers  observer
   }
 
-  createCaseFile(rawCaseFile) {
+  createCaseFile(rawCaseFileData) {
     const caseFiles = AppState.caseFiles
-    const newCaseFile = new CaseFile(rawCaseFile)
-    caseFiles.push(newCaseFile)
+    const newCaseFile = new CaseFile(rawCaseFileData)
+    caseFiles.push(newCaseFile) // triggers 'caseFiles' observers
     this.saveCaseFiles()
   }
 
@@ -51,7 +48,7 @@ class CaseFilesService {
 
   loadCaseFiles() {
     const caseFiles = loadState('caseFiles', [CaseFile])
-    AppState.caseFiles = caseFiles // triggers observer
+    AppState.caseFiles = caseFiles // triggers 'caseFiles' observers
   }
 
 }
