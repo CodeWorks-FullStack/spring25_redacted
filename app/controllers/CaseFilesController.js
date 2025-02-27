@@ -22,4 +22,9 @@ export class CaseFilesController {
     const boldElem = reportCountElem.querySelector('b')
     boldElem.innerText = caseFiles.length.toString()
   }
+
+  createCaseFile() {
+    event.preventDefault()
+    console.log('creating case file');
+  }
 }
