@@ -38,16 +38,16 @@
               <form onsubmit="app.caseFilesController.createCaseFile()">
                 <div class="mb-3">
                   <label for="reportTitle">Title</label>
-                  <input id="reportTitle" type="text" required maxlength="40">
+                  <input id="reportTitle" name="title" type="text" required maxlength="40">
                 </div>
                 <div class="d-flex justify-content-between align-items-end">
                   <div>
                     <label for="reportAgency">Agency</label>
-                    <select id="reportAgency" name="" required>
+                    <select id="reportAgency" name="agency" required>
                       <option value="">Select an agency</option>
                       <option value="FBI">FBI</option>
                       <option value="F&G">Fish and Game</option>
-                      <option value="A51">A51</option>
+                      <option value="A51">Area 51</option>
                       <option value="CIA">CIA</option>
                       <option value="NFL">NFL</option>
                       <option value="IRS">IRS</option>

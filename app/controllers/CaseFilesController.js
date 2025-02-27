@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js";
+import { getFormData } from "../utils/FormHandler.js";
 
 export class CaseFilesController {
   constructor() {
@@ -25,6 +26,9 @@ export class CaseFilesController {
 
   createCaseFile() {
     event.preventDefault()
-    console.log('creating case file');
+    const formElem = event.target
+    const rawCaseFileData = getFormData(formElem)
+    console.log(rawCaseFileData);
+
   }
 }
