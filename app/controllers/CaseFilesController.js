@@ -1,8 +1,12 @@
 import { AppState } from "../AppState.js";
+import { caseFilesService } from "../services/CaseFilesService.js";
 import { getFormData } from "../utils/FormHandler.js";
 
 export class CaseFilesController {
   constructor() {
+    AppState.on('caseFiles', this.drawCaseFiles)
+    AppState.on('caseFiles', this.drawReportCount)
+
     console.log('case files controller is loaded');
     this.drawCaseFiles()
     this.drawReportCount()
@@ -28,7 +32,7 @@ export class CaseFilesController {
     event.preventDefault()
     const formElem = event.target
     const rawCaseFileData = getFormData(formElem)
-    console.log(rawCaseFileData);
-
+    console.log('data from form', rawCaseFileData);
+    caseFilesService.createCaseFile(rawCaseFileData)
   }
 }
