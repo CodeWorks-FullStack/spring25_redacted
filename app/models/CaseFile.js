@@ -75,7 +75,7 @@ export class CaseFile {
       <time class="fs-3" datetime="${this.reportedDateTime}">
         ${this.longWindedReportedDate} at ${this.longWindedReportedTime}
       </time>
-      <form>
+      <form onsubmit="app.caseFilesController.saveReport()">
         <label for="reportContent">Report Content</label>
         <textarea id="reportContent" name="content" ${this.isLocked ? 'disabled' : ''}>${this.content}</textarea>
         <div class="d-flex justify-content-between align-items-center my-1">

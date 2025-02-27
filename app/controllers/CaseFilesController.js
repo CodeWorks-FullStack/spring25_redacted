@@ -56,4 +56,16 @@ export class CaseFilesController {
     console.log('unlocking a case file!', AppState.activeCaseFile);
     caseFilesService.unlockActiveCaseFile()
   }
+
+  saveReport() {
+    event.preventDefault()
+    console.log('saving report!');
+    const formElem = event.target
+    // NOTE you can ignore the error that VSCODE is pointing at on this line
+    // NOTE content matches the name attribute on my textarea
+    // NOTE value pulls out the actual text from the input
+    // @ts-ignore
+    const contentFromTextArea = formElem.content.value
+    caseFilesService.updateCaseFile(contentFromTextArea)
+  }
 }
