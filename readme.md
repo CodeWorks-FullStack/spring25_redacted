@@ -16,6 +16,8 @@ The content under the CodeWorks®, LLC Organization and all of the individual re
 
 ## Broken Things
 
+- App is in darkmode with no styles for it
+
 - Form `name` for the input title is incorrect and does not match model
 
 - Form submit button is not inside the form
@@ -32,7 +34,7 @@ The content under the CodeWorks®, LLC Organization and all of the individual re
 
 - set activeCaseFile in service is WACK. It is overly simplified and very hard to debug, it should be split up into more *vertical* code for better testing/ debugging
 
-- emit in unlock is the name of the function not the name of the AppState Property it is listening too
+- emit in unlock is the name of the function not the name of the AppState Property it is observing 
 
 
 
