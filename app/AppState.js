@@ -7,6 +7,7 @@ class ObservableAppState extends EventEmitter {
   /**
    * @type {CaseFile[]}
    */
+  // NOTE once local storage is working you can remove test data
   caseFiles = []
 
   /**
