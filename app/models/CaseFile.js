@@ -43,6 +43,10 @@ export class CaseFile {
     })
   }
 
+  get lastUnlockedDate() {
+    return this.lastUnlockedAt.toLocaleString('en-US', { hour12: false })
+  }
+
   get listHTMLTemplate() {
     return `
     <li onclick="app.caseFilesController.selectActiveCaseFile('${this.id}')" role="button">
@@ -75,7 +79,7 @@ export class CaseFile {
         <label for="reportContent">Report Content</label>
         <textarea id="reportContent" name="content" ${this.isLocked ? 'disabled' : ''}>${this.content}</textarea>
         <div class="d-flex justify-content-between align-items-center my-1">
-          <p class="mb-0">Last unlocked on 12/12/2024 at 14:00:01</p>
+          <p class="mb-0">Last unlocked on ${this.lastUnlockedDate}</p>
           ${this.button}
         </div>
       </form>

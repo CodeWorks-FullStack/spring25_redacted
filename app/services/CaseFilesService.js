@@ -6,7 +6,7 @@ class CaseFilesService {
     const caseFile = AppState.activeCaseFile
     // NOTE changing one property on an object is not enough to trigger our observer
     caseFile.isLocked = false
-
+    caseFile.lastUnlockedAt = new Date()
     // NOTE manually trigger an observer
     AppState.emit('activeCaseFile')
   }
