@@ -56,7 +56,7 @@
               <form onsubmit="app.caseFilesController.createCaseFile()">
                 <div class="mb-3">
                   <label for="reportTitle">Title</label>
-                  <input id="reportTitle" name="title" type="text" required maxlength="40">
+                  <input id="reportTitle" name="reportTitle" type="text" required maxlength="40">
                 </div>
                 <div class="d-flex justify-content-between align-items-end">
                   <div>
@@ -71,9 +71,9 @@
                       <option value="IRS">IRS</option>
                     </select>
                   </div>
-                  <button type="submit">Submit</button>
                 </div>
               </form>
+              <button type="submit">Submit</button>
             </div>
             <ul id="caseFilesList">
               <!-- STUB report list item -->

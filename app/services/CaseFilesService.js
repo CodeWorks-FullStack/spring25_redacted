@@ -27,15 +27,12 @@ class CaseFilesService {
     caseFile.isLocked = false
     caseFile.lastUnlockedAt = new Date()
     // NOTE manually trigger an observer
-    AppState.emit('activeCaseFile')
+    AppState.emit('unlockActiveCaseFile')
     this.saveCaseFiles()
   }
 
   setActiveCaseFile(caseFileId) {
-    const caseFiles = AppState.caseFiles
-    const foundCaseFile = caseFiles.find(caseFile => caseFile.id == caseFileId)
-    console.log('found a case file', foundCaseFile);
-    AppState.activeCaseFile = foundCaseFile
+    console.log(AppState.activeCaseFile = AppState.caseFiles.find(function (cf) { cf.id.includes(caseFileId) }))
   }
 
   createCaseFile(rawCaseFile) {

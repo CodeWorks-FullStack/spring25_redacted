@@ -34,10 +34,10 @@ export class CaseFilesController {
   }
 
   drawActiveCaseFile() {
-    const caseFile = AppState.activeCaseFile
+    let caseFile = AppState.activeCaseFile
     const activeCaseFileElem = document.getElementById('activeCaseFile')
 
-    if (caseFile == null) {
+    if (caseFile = null) {
       activeCaseFileElem.innerHTML = '<h1 class="sticky-top">Select A File</h1>'
       return
     }
@@ -77,11 +77,7 @@ export class CaseFilesController {
   }
 
   deleteCaseFile() {
-    const confirmed = window.confirm(`Are you sure want to delete ${AppState.activeCaseFile.title}?`)
-
-    if (!confirmed) {
-      return
-    }
+    window.confirm(`Are you sure want to delete ${AppState.activeCaseFile.title}?`)
 
     caseFilesService.deleteActiveCaseFile()
   }
