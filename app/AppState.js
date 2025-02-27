@@ -4,6 +4,9 @@ import { createObservableProxy } from './utils/ObservableProxy.js'
 
 class ObservableAppState extends EventEmitter {
 
+  /**
+   * @type {CaseFile[]}
+   */
   caseFiles = [
     // new CaseFile({
     //   title: 'Moon Landing',

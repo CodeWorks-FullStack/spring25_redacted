@@ -3,6 +3,16 @@ import { CaseFile } from "../models/CaseFile.js"
 import { loadState, saveState } from "../utils/Store.js"
 
 class CaseFilesService {
+  deleteActiveCaseFile() {
+
+    const caseFiles = AppState.caseFiles
+    const caseFileIndex = caseFiles.findIndex(caseFile => caseFile.id == AppState.activeCaseFile.id)
+    caseFiles.splice(caseFileIndex, 1) // trigger observer
+
+    AppState.activeCaseFile = null // trigger observer
+
+    this.saveCaseFiles()
+  }
   updateCaseFile(updatedContent) {
     const caseFile = AppState.activeCaseFile
     caseFile.content = updatedContent

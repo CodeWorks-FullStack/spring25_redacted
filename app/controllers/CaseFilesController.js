@@ -36,6 +36,12 @@ export class CaseFilesController {
   drawActiveCaseFile() {
     const caseFile = AppState.activeCaseFile
     const activeCaseFileElem = document.getElementById('activeCaseFile')
+
+    if (caseFile == null) {
+      activeCaseFileElem.innerHTML = '<h1 class="sticky-top">Select A File</h1>'
+      return
+    }
+
     activeCaseFileElem.innerHTML = caseFile.activeHTMLTemplate
   }
 
@@ -71,7 +77,12 @@ export class CaseFilesController {
   }
 
   deleteCaseFile() {
-    console.log('deleting case file!');
+    const confirmed = window.confirm(`Are you sure want to delete ${AppState.activeCaseFile.title}?`)
 
+    if (!confirmed) {
+      return
+    }
+
+    caseFilesService.deleteActiveCaseFile()
   }
 }
