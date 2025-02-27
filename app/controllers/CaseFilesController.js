@@ -38,6 +38,6 @@ export class CaseFilesController {
 
   selectActiveCaseFile(caseFileId) {
     console.log('selecting case file with the id of ' + caseFileId);
-
+    caseFilesService.setActiveCaseFile(caseFileId)
   }
 }

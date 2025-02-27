@@ -25,6 +25,11 @@ class ObservableAppState extends EventEmitter {
       agency: 'CIA'
     }),
   ]
+
+  /**
+   * @type {CaseFile}
+   */
+  activeCaseFile = null
 }
 
 export const AppState = createObservableProxy(new ObservableAppState())
