@@ -16,12 +16,20 @@ export class CaseFile {
     this.content = data.content
   }
 
+  get caseNumber() {
+    return this.id.substring(this.id.length - 4)
+  }
+
+  get reportedDate() {
+    return this.reportedAt.toLocaleDateString()
+  }
+
   get listHTMLTemplate() {
     return `
      <li role="button">
       <div class="d-flex justify-content-between fs-5 mb-2">
-        <b>Fish&Game 1234</b>
-        <span>12/12/25</span>
+        <b>${this.agency} ${this.caseNumber}</b>
+        <span>${this.reportedDate}</span>
       </div>
       <hr>
     </li>

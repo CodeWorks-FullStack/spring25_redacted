@@ -7,12 +7,12 @@ class ObservableAppState extends EventEmitter {
   caseFiles = [
     new CaseFile({
       title: 'Moon Landing',
-      agency: 'Area51',
+      agency: 'A51',
       content: 'We "landed" on the "moon" and everything was great.'
     }),
     new CaseFile({
       title: 'Bigfoot',
-      agency: 'Fish&Game',
+      agency: 'F&G',
       content: 'Saw a big hairy creature in the woods. It was eating a hot dog.'
     }),
     new CaseFile({
