@@ -1,6 +1,9 @@
 import { generateId } from "../utils/GenerateId.js"
 
 export class CaseFile {
+  /**
+   * @param {{ title: string; agency: string; content?: string; }} data
+   */
   constructor(data) {
     this.id = generateId()
     // returns an object that we can use to display date/time/day of week in different formats
