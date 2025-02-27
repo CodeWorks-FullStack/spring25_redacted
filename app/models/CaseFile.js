@@ -24,6 +24,25 @@ export class CaseFile {
     return this.reportedAt.toLocaleDateString()
   }
 
+  get reportedDateTime() {
+    return this.reportedAt.toLocaleDateString('ja-JP')
+  }
+
+  get longWindedReportedDate() {
+    return this.reportedAt.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'long',
+      day: '2-digit',
+      year: 'numeric',
+    })
+  }
+  get longWindedReportedTime() {
+    return this.reportedAt.toLocaleTimeString('en-US', {
+      hour12: false,
+      timeStyle: 'medium'
+    })
+  }
+
   get listHTMLTemplate() {
     return `
     <li onclick="app.caseFilesController.selectActiveCaseFile('${this.id}')" role="button">
@@ -36,20 +55,28 @@ export class CaseFile {
     `
   }
 
+  get button() {
+    if (this.isLocked) {
+      return '<button onclick="app.caseFilesController.unlockCaseFile()" type="button">Unlock</button>'
+    }
+
+
+    return '<button type="submit">Save</button>'
+  }
+
   get activeHTMLTemplate() {
     return `
     <div class="bg-light p-3">
-      <h1>Bigfoot</h1>
-      <time class="fs-3" datetime="1984-03-12">
-        Thursday, March 12 1984 at 14:00:01
+      <h1>${this.title}</h1>
+      <time class="fs-3" datetime="${this.reportedDateTime}">
+        ${this.longWindedReportedDate} at ${this.longWindedReportedTime}
       </time>
       <form>
         <label for="reportContent">Report Content</label>
-        <textarea id="reportContent" name="content">
-        </textarea>
+        <textarea id="reportContent" name="content" ${this.isLocked ? 'disabled' : ''}>${this.content}</textarea>
         <div class="d-flex justify-content-between align-items-center my-1">
           <p class="mb-0">Last unlocked on 12/12/2024 at 14:00:01</p>
-          <button type="submit">Save</button>
+          ${this.button}
         </div>
       </form>
     </div>

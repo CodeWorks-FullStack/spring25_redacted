@@ -50,4 +50,10 @@ export class CaseFilesController {
     console.log('selecting case file with the id of ' + caseFileId);
     caseFilesService.setActiveCaseFile(caseFileId)
   }
+
+  unlockCaseFile() {
+    // NOTE this will always unlock the active case file
+    console.log('unlocking a case file!', AppState.activeCaseFile);
+    caseFilesService.unlockActiveCaseFile()
+  }
 }
