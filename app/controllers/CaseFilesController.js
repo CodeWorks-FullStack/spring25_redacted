@@ -35,7 +35,7 @@ export class CaseFilesController {
   drawActiveCaseFile() {
     const caseFile = AppState.activeCaseFile
     const activeCaseFileElem = document.getElementById('activeCaseFile')
-    activeCaseFileElem.innerText = caseFile.title
+    activeCaseFileElem.innerHTML = caseFile.activeHTMLTemplate
   }
 
   createCaseFile() {
