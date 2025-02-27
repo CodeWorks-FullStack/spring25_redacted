@@ -2,14 +2,14 @@ import { generateId } from "../utils/GenerateId.js"
 
 export class CaseFile {
   /**
-   * @param {{ title: string; agency: string; content?: string; }} data
+   * @param {{ title: string; agency: string; content?: string; lastUnlockedAt?: string; reportedAt?: string; id?: string }} data
    */
   constructor(data) {
-    this.id = generateId()
+    this.id = data.id ?? generateId()
     // returns an object that we can use to display date/time/day of week in different formats
-    this.reportedAt = new Date()
+    this.reportedAt = data.reportedAt ? new Date(data.reportedAt) : new Date()
     // returns an object that we can use to display date/time/day of week in different formats
-    this.lastUnlockedAt = new Date()
+    this.lastUnlockedAt = data.lastUnlockedAt ? new Date(data.lastUnlockedAt) : new Date()
     this.isLocked = true
     this.title = data.title
     this.agency = data.agency
@@ -71,7 +71,7 @@ export class CaseFile {
 
   get activeHTMLTemplate() {
     return `
-    <div class="bg-light p-3">
+    <div class="bg-light p-3 sticky-top">
       <h1>${this.title}</h1>
       <time class="fs-3" datetime="${this.reportedDateTime}">
         ${this.longWindedReportedDate} at ${this.longWindedReportedTime}

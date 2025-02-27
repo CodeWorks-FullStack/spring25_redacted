@@ -8,6 +8,7 @@ class CaseFilesService {
     caseFile.content = updatedContent
     caseFile.isLocked = true
     AppState.emit('activeCaseFile')
+    this.saveCaseFiles()
   }
 
   unlockActiveCaseFile() {
@@ -17,6 +18,7 @@ class CaseFilesService {
     caseFile.lastUnlockedAt = new Date()
     // NOTE manually trigger an observer
     AppState.emit('activeCaseFile')
+    this.saveCaseFiles()
   }
 
   setActiveCaseFile(caseFileId) {
@@ -39,7 +41,7 @@ class CaseFilesService {
 
   loadCaseFiles() {
     const caseFiles = loadState('caseFiles', [CaseFile])
-    AppState.caseFiles = caseFiles
+    AppState.caseFiles = caseFiles // triggers observer
   }
 
 }
