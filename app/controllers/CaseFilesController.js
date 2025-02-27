@@ -69,4 +69,9 @@ export class CaseFilesController {
     const contentFromTextArea = formElem.content.value
     caseFilesService.updateCaseFile(contentFromTextArea)
   }
+
+  deleteCaseFile() {
+    console.log('deleting case file!');
+
+  }
 }

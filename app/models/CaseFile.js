@@ -81,7 +81,12 @@ export class CaseFile {
         <textarea id="reportContent" name="content" ${this.isLocked ? 'disabled' : ''}>${this.content}</textarea>
         <div class="d-flex justify-content-between align-items-center my-1">
           <p class="mb-0">Last unlocked on ${this.lastUnlockedDate}</p>
-          ${this.button}
+          <div>
+            <button onclick="app.caseFilesController.deleteCaseFile()" class="me-1" type="button">
+              Delete
+            </button>
+            ${this.button}
+          </div>
         </div>
       </form>
     </div>
