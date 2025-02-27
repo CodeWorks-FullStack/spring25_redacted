@@ -14,9 +14,10 @@ body {
 
 main {
   flex-grow: 1;
-  display: flex;
-  place-content: center;
-  align-items: center;
+}
+
+hr {
+  margin: .5rem 0;
 }
 
 #pop-toast-container {
