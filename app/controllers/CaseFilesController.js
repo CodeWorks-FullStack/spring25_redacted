@@ -4,9 +4,13 @@ import { getFormData } from "../utils/FormHandler.js";
 
 export class CaseFilesController {
   constructor() {
+    // observers
     AppState.on('caseFiles', this.drawCaseFiles)
     AppState.on('caseFiles', this.drawReportCount)
+    AppState.on('activeCaseFile', this.drawActiveCaseFile)
 
+
+    // page load
     console.log('case files controller is loaded');
     this.drawCaseFiles()
     this.drawReportCount()
@@ -26,6 +30,12 @@ export class CaseFilesController {
     reportCountElem.setAttribute('title', `${caseFiles.length} reports`)
     const boldElem = reportCountElem.querySelector('b')
     boldElem.innerText = caseFiles.length.toString()
+  }
+
+  drawActiveCaseFile() {
+    const caseFile = AppState.activeCaseFile
+    const activeCaseFileElem = document.getElementById('activeCaseFile')
+    activeCaseFileElem.innerText = caseFile.title
   }
 
   createCaseFile() {
